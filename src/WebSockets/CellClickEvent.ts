@@ -344,21 +344,21 @@ export const sendCellClickEvent = async (row: number, col: number) => {
           SoundManager.playDiamondReveal();
           console.log('SAFE CELL REVEALED');
 
-          // Re-enable UI elements after successful cell click
-          enablePickRandomButton();
-          enableGrid();
-
           // Enable cashout button if this is the first successful cell click
           const minesClickedCount = GlobalState.getMinesClickedCount();
           if(minesClickedCount === GlobalState.gridCols*GlobalState.gridRows - GlobalState.getMinesCount()){
             console.log('💰 Cashout button enabled after first cell click');
-            sendCashoutEvent();
+            await sendCashoutEvent();
             return;
           }
           if (minesClickedCount >= 1) {
             enableCashoutButton();
             console.log('💰 Cashout button enabled after first cell click');
           }
+
+          // Re-enable UI elements after successful cell click
+          enablePickRandomButton();
+          enableGrid();
 
           console.log('🔓 UI unlocked after successful cell click');
         }

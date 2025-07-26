@@ -1,8 +1,10 @@
 import { Assets } from 'pixi.js';
+import { GlobalState } from "./globals/gameState";
+import { REACT_MODE } from "./components/constants/ReactMode";
 
 export async function loadAssets() {
     // const ASSET_BASE = '';
-    const ASSET_BASE = 'https://s3.eu-west-2.amazonaws.com/static.inferixai.link/pixi-game-assets/mines/'
+    const ASSET_BASE = REACT_MODE ? GlobalState.getS3Url()+'mines/' : 'https://s3.eu-west-2.amazonaws.com/static.inferixai.link/pixi-game-assets/mines/'
     
     // Load all assets including the font file
     await Assets.load([

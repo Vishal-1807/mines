@@ -1,16 +1,25 @@
 import { Howl, Howler } from 'howler';
+import { GlobalState } from "../globals/gameState";
+import { REACT_MODE } from "../components/constants/ReactMode";
 
 let bgVolume = 0.5;
 let sfxVolume = 0.5;
 let isMuted = false;
-const ASSET_BASE = 'https://s3.eu-west-2.amazonaws.com/static.inferixai.link/pixi-game-assets/mines/sounds/';
+// const ASSET_BASE = 'https://s3.eu-west-2.amazonaws.com/static.inferixai.link/pixi-game-assets/mines/sounds/';
 // const ASSET_BASE = 'sounds/';
 // Store sound instances
 const sounds: Record<string, Howl> = {};
 
+const getAssetBase = () => {
+  return REACT_MODE ? 
+    `${GlobalState.getS3Url()}mines/sounds/` : 
+    'https://s3.eu-west-2.amazonaws.com/static.inferixai.link/pixi-game-assets/mines/sounds/';
+}
+
 export const SoundManager = {
 
   load() {
+    const ASSET_BASE = getAssetBase();
     const soundsToLoad = {
       bgMusic: `${ASSET_BASE}main_music.mp3`,
       diamond: `${ASSET_BASE}diamond_revel.mp3`,
