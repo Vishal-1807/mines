@@ -64,8 +64,8 @@ export const createCashoutButton = (appWidth: number, appHeight: number) => {
   });
 
   container.addChild(cashoutButton);
-  // container.addChild(rewardText);
-  container.addChild(roundIdText);
+  container.addChild(rewardText);
+  // container.addChild(roundIdText);
   // update reward when reward changes
   GlobalState.addRewardChangeListener(() => {
     updateRewardText();
