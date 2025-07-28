@@ -1,5 +1,5 @@
 import { Application, Text } from 'pixi.js'
-import { hideSplash, loadAssets } from './loader';
+import { hideSplash, loadAssets, setupSplashVideoLoadDetection } from './loader';
 import { GlobalState } from './globals/gameState';
 import { WebSocketService } from './WebSockets/WebSocketService';
 import { getUIVisibilityManager, registerUIElement } from './utils/uiVisibilityManager';
@@ -484,6 +484,8 @@ const initReactMode = async (container: HTMLDivElement) => {
   video.appendChild(source);
   splash.appendChild(video);
   container.appendChild(splash);
+
+  setupSplashVideoLoadDetection();
 
   // Initialize PIXI Application
   const app = new Application();
