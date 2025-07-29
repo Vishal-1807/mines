@@ -54,7 +54,7 @@ const initializeGame = async (app: Application, container?: HTMLDivElement) => {
   await loadAssets();
   
   // Initialize WebSocket connection
-  const ws = await WebSocketService.getInstance();
+  const ws = WebSocketService.getInstance();
 
   // Initialize activity manager for handling user inactivity
   const initActivityManager = () => {
@@ -322,7 +322,7 @@ const initializeGame = async (app: Application, container?: HTMLDivElement) => {
       }
 
       // Step 3: Initialize game UI (now with correct grid dimensions if pending game exists)
-      await initializeGameUI();
+      initializeGameUI();
 
       // Step 3.5: Complete game restoration if pending game exists
       if(hasPendingGame){
@@ -333,7 +333,7 @@ const initializeGame = async (app: Application, container?: HTMLDivElement) => {
       }
 
       // Step 4: Initialize sounds
-      await initializeSounds();
+      initializeSounds();
 
       // Step 5: Remove splash screen (since we're not checking for pending games for now)
       console.log('🎨 Removing splash screen...');
