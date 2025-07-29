@@ -11,8 +11,7 @@ import { createText } from './commons';
 export const createBetTab = (appWidth: number, appHeight: number) => {
   const container = new Container();
   container.zIndex = 50;
-
-  const betSteps = GlobalState.getBetSteps();
+  
   let currentStakeAmount = GlobalState.getStakeAmount();
 
   const spacing = appWidth * 0.1

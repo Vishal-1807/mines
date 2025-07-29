@@ -1,7 +1,6 @@
 import { GlobalState } from "../globals/gameState";
 import { WebSocketService } from "./WebSocketService";
-import { revealAllRemainingCells } from "./CellClickEvent";
-import { hideGameButtons, showBetButton } from "../utils/gameButtonVisibilityManager";
+import { hideGameButtons } from "../utils/gameButtonVisibilityManager";
 
 export const GameEndEvent = async (bombEnd: boolean = false) => {
   if(!GlobalState.getGameStarted?.()){
@@ -26,15 +25,10 @@ export const GameEndEvent = async (bombEnd: boolean = false) => {
       }
 
       GlobalState.setGameMatrix(res.revealedMatrix); 
-      // GlobalState.setGameStarted(false);
-      // GlobalState.setBalance(res.balance);
 
       GlobalState.resetMinesClickedCount();
 
       // Reveal all remaining cells when cashout is successful
-      // await revealAllRemainingCells();
-
-      // showBetButton();
 
       console.log('✅ Round ended successfully', res);
     } else {

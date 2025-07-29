@@ -7,9 +7,9 @@ type WSMessage = { event: string; data: any };
 export class WebSocketService {
   private static instance: WebSocketService;
   private socket: WebSocket | null = null;
-  private listeners = new Map<string, (data: any) => void>();
-  private queue: WSMessage[] = [];
-  private reconnectDelay = 1000;
+  private readonly listeners = new Map<string, (data: any) => void>();
+  private readonly queue: WSMessage[] = [];
+  private readonly reconnectDelay = 1000;
   private isConnected = false;
 
   // Get the URL with the current token from GlobalState
