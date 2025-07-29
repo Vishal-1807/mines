@@ -12,12 +12,6 @@ export const createGridSizesTab = (appWidth: number, appHeight: number) => {
   const container = new Container();
   container.zIndex = 50;
 
-  const gridSizes = [
-    { cols: 3, rows: 3, texture: 'grid3x3' },
-    { cols: 4, rows: 4, texture: 'grid4x4' },
-    { cols: 5, rows: 5, texture: 'grid5x5' },
-  ];
-
   const spacing = appWidth * 0.06;
   const gridTextY = GlobalState.smallScreen ? appHeight * 0.046 : appHeight * 0.039;
 

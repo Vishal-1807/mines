@@ -113,7 +113,6 @@ export const createGrid = (options: GridOptions) => {
 
   // Function to handle cell clicks
   const handleCellClick = async (row: number, col: number) => {
-    const cell = gridCells[row][col];
     console.log(GlobalState.getGameStarted?.());
     if(!GlobalState.getGameStarted?.()){
       console.warn('Game not started, cannot send cell click event');
@@ -121,19 +120,6 @@ export const createGrid = (options: GridOptions) => {
     }
     console.log('Sending cell click event', row, col);
     await sendCellClickEvent(row, col);
-    // if (cell.isRevealed || cell.isFlag) {
-    //   return; // Already revealed or flagged
-    // }
-
-    // // For now, just reveal the cell
-    // // TODO: Implement mine logic, cascading reveals, etc.
-    // cell.isRevealed = true;
-    
-    // // Change button appearance to show it's revealed
-    // const button = cell.button as any;
-    // if (button.children && button.children[1]) { // Background is typically the second child
-    //   button.children[1].tint = UI_THEME.BUTTON_PRESSED;
-    // }
   };
 
   // Function to generate the grid based on current size
@@ -147,7 +133,6 @@ export const createGrid = (options: GridOptions) => {
     const layout = calculateGridLayout(currentGridSize.rows, currentGridSize.cols);
 
     const gridWidth = layout.buttonSize * currentGridSize.cols;
-    const gridHeight = layout.buttonSize * currentGridSize.rows;
 
     // Set pivot to the center of the grid's dimensions
     gridContainer.pivot.set(layout.totalWidth / 2, layout.totalHeight / 2);
@@ -356,7 +341,6 @@ export const createGrid = (options: GridOptions) => {
       }
 
       console.log('🔄 Loading grid from revealed matrix:', gameMatrix);
-      // console.log('🎯 Clicked cells:', Array.from(clickedCells));
 
       let loadedCount = 0;
 
@@ -365,7 +349,6 @@ export const createGrid = (options: GridOptions) => {
       // Iterate through all cells in the grid
       for (let row = 0; row < GlobalState.gridRows; row++) {
         for (let col = 0; col < GlobalState.gridCols; col++) {
-          const cellKey = `${row}-${col}`;
 
           // Only load cells that were previously clicked
           // if (clickedCells.has(cellKey)) {

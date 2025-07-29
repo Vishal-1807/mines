@@ -1,5 +1,5 @@
 // SettingsPopup.ts - Modular settings popup with responsive layout
-import { Container, Graphics, Text, Assets } from 'pixi.js';
+import { Container, Graphics, Text } from 'pixi.js';
 import { createButton } from '../commons/Button';
 import { UI_THEME } from '../constants/UIThemeColors';
 import { SoundManager } from '../../utils/SoundManager';

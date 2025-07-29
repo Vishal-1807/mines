@@ -7,12 +7,12 @@ import { createRulesSettingsSection } from './settings/RulesSettingsSection';
 import { createAccountSettingsSection } from './settings/AccountSettingsSection';
 
 class SettingsPopupManager {
-  private app: Application;
+  private readonly app: Application;
   private currentPopup: Container | null = null;
   private isVisible: boolean = false;
   
   // Default settings sections
-  private defaultButtons: SettingsButton[] = [
+  private readonly defaultButtons: SettingsButton[] = [
     {
       id: 'audio',
       label: 'Audio',
@@ -30,7 +30,7 @@ class SettingsPopupManager {
     }
   ];
   
-  private defaultContentSections: SettingsContentSection[] = [
+  private readonly defaultContentSections: SettingsContentSection[] = [
     createAudioSettingsSection(),
     createRulesSettingsSection(),
     createAccountSettingsSection()

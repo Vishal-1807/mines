@@ -1,4 +1,4 @@
-import { Container, Graphics, Text, Assets } from 'pixi.js';
+import { Container, Graphics } from 'pixi.js';
 import { SoundManager } from '../../utils/SoundManager';
 import { createText } from '../commons/Text';
 import { GlobalState } from '../../globals/gameState';
@@ -62,23 +62,6 @@ export const createWinModal = (
     fontWeight: 'bold'
   });
   popupContainer.addChild(rewardText);
-  
-  // // Create close button using your existing createButton component
-  // const closeButton = createButton({
-  //   x: modalWidth / 2,
-  //   y: modalHeight * 0.75,
-  //   width: modalWidth * 0.3,
-  //   height: modalHeight * 0.12,
-  //   text: 'Close',
-  //   fontSize: Math.max(14, Math.min(18, modalWidth * 0.04)),
-  //   backgroundColor: '#2A4C58', // Using your existing UI theme colors
-  //   textColor: '#FFFFFF',
-  //   borderColor: '#00FF00', // Green border to match popup theme
-  //   borderWidth: 2,
-  //   borderRadius: 8,
-  //   onClick: onClose
-  // });
-  // popupContainer.addChild(closeButton);
   
 
   // Initially hidden (like GameEndPopup)
