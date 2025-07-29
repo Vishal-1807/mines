@@ -82,9 +82,6 @@ export class WebSocketService {
 
     this.socket.onerror = (err) => {
       console.error('WebSocket error:', err);
-      // if (typeof window !== 'undefined' && (window as any).logoutUser) {
-      //   (window as any).logoutUser();
-      // }
       this.socket?.close();
     };
   }

@@ -1,5 +1,3 @@
-import { GlobalState } from '../../globals/gameState';
-
 export const UI_POS = {
 
   //y positioning of elements

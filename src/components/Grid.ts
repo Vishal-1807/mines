@@ -5,7 +5,6 @@ import { UI_THEME } from './constants/UIThemeColors';
 import { sendCellClickEvent } from '../WebSockets/CellClickEvent';
 import { ActivityTypes, recordUserActivity } from '../utils/gameActivityManager';
 import { createSpriteFromLoadedAssets } from './commons/Sprites';
-import { createText } from './commons';
 
 export interface GridOptions {
   appWidth: number;

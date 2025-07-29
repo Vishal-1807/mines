@@ -1,6 +1,5 @@
 // AudioSettingsSection.ts - Audio settings content section
 import { Container, Text } from 'pixi.js';
-import { UI_THEME } from '../../constants/UIThemeColors';
 import { SettingsContentSection, SettingsPopupDimensions } from '../SettingsPopup';
 import { SoundManager } from '../../../utils/SoundManager';
 import createSlider from '../../commons/Slider';

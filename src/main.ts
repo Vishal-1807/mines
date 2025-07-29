@@ -12,12 +12,9 @@ import { createGameContainer } from './components/gameContainer';
 import {UI_THEME} from './components/constants/UIThemeColors';
 import { createBetButton, createGridSizesTab, createBetTab, createMinesTab, 
           createGrid, createTopBar, createCashoutButton, createPickRandomButton } from './components';
-import { createText } from './components/commons';
 import {
-  createPositionedContainer,
   createSimplePositionedContainer,
   createStyledPositionedContainer,
-  createMarginedPositionedContainer,
   createScrollablePositionedContainer
 } from './components/commons/PositionedContainer';
 import { createWinModal } from './components/popups/WinModal';
