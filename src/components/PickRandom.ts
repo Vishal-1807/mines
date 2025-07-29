@@ -26,8 +26,13 @@ const pickRandomCell = async (): Promise<void> => {
       return;
     }
 
+    const crypto = window.crypto;
+    const arr = new Uint32Array(1);
+    crypto.getRandomValues(arr);
+    const secureValue = arr[0];
+
     // Pick a random cell from unclicked cells
-    const randomIndex = Math.floor(Math.random() * unclickedCells.length);
+    const randomIndex = Math.floor(secureValue * unclickedCells.length);
     const selectedCell = unclickedCells[randomIndex];
 
     console.log(`🎲 Picking random cell: row ${selectedCell.row}, col ${selectedCell.col} (${randomIndex + 1}/${unclickedCells.length} available)`);
