@@ -64,11 +64,13 @@ export const createPickRandomButton = (appWidth: number, appHeight: number) => {
       borderRadius: 3,
       label: 'Pick Random',
       visibility: false, // Initially hidden, managed by gameButtonVisibilityManager
-      onClick: async () => {
-        SoundManager.playUIClick();
-        recordUserActivity(ActivityTypes.BUTTON_CLICK, { buttonName: 'pickRandomButton' });
-        console.log('Pick Random button clicked');
-        await pickRandomCell();
+      onClick: () => {
+        (async () => {
+          SoundManager.playUIClick();
+          recordUserActivity(ActivityTypes.BUTTON_CLICK, { buttonName: 'pickRandomButton' });
+          console.log('Pick Random button clicked');
+          await pickRandomCell();
+        })();
       },
     });
 

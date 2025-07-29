@@ -25,36 +25,39 @@ export const createBetButton = (appWidth: number, appHeight: number) => {
     borderRadius: 3,
     label: 'PlaceBet',
     visibility: true, // Initially visible, managed by gameButtonVisibilityManager
-    onClick: async () => {
-      (window as any).winModal?.hideModal();
-      SoundManager.playPlaceBet();
-      recordUserActivity(ActivityTypes.GAME_START);
-      console.log('Bet button clicked - starting round...');
+    onClick: () => {
+      (async () => {
+        // Hide win modal if visible)
+        (window as any).winModal?.hideModal();
+        SoundManager.playPlaceBet();
+        recordUserActivity(ActivityTypes.GAME_START);
+        console.log('Bet button clicked - starting round...');
 
-      // Clear all sprites and restore cells from previous round
-      clearAllSpritesAndRestoreCells();
+        // Clear all sprites and restore cells from previous round
+        clearAllSpritesAndRestoreCells();
 
-      // Hide bet button immediately after pressing
-      hideBetButton();
+        // Hide bet button immediately after pressing
+        hideBetButton();
 
-      // Disable all setting buttons to prevent changes during bet process
-      disableSettingButtons();
+        // Disable all setting buttons to prevent changes during bet process
+        disableSettingButtons();
 
-      try {
-        // Wait for successful bet placement
-        await sendRoundStartEvent();
-        console.log('Round started successfully');
-        // Setting buttons remain disabled since game has started
-        // Cashout and pick random buttons are shown by the PlaceBetEvent success handler
-      } catch (error) {
-        console.error('Failed to start round:', error);
-        // Reset game state if round start failed
-        GlobalState.setGameStarted(false);
-        // Show bet button again on failure
-        showBetButton();
-        // Re-enable setting buttons since bet failed
-        enableSettingButtons();
-      }
+        try {
+          // Wait for successful bet placement
+          await sendRoundStartEvent();
+          console.log('Round started successfully');
+          // Setting buttons remain disabled since game has started
+          // Cashout and pick random buttons are shown by the PlaceBetEvent success handler
+        } catch (error) {
+          console.error('Failed to start round:', error);
+          // Reset game state if round start failed
+          GlobalState.setGameStarted(false);
+          // Show bet button again on failure
+          showBetButton();
+          // Re-enable setting buttons since bet failed
+          enableSettingButtons();
+        }
+      })();
     },
   });
 
