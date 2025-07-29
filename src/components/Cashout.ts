@@ -17,9 +17,9 @@ export const createCashoutButton = (appWidth: number, appHeight: number) => {
     if (rewardText) {
       (rewardText as any).setText(`Reward: ${GlobalState.getReward()}`);
     }
-    if (roundIdText) {
-      (roundIdText as any).setText(`Round ID: ${GlobalState.getRoundId()}`);
-    }
+    // if (roundIdText) {
+    //   (roundIdText as any).setText(`Round ID: ${GlobalState.getRoundId()}`);
+    // }
   };
 
   const cashoutButton = createButton({
@@ -53,15 +53,15 @@ export const createCashoutButton = (appWidth: number, appHeight: number) => {
     visibility: false, // Initially hidden, managed by gameButtonVisibilityManager
   });
 
-  const roundIdText = createText({
-    x: appWidth * 0.02,
-    y: cashoutButton.y - appHeight * 0.07,
-    text: `Round ID: ${GlobalState.getRoundId()}`,
-    fontSize: Math.min(15, appHeight * 0.025),
-    color: UI_THEME.INPUT_TEXT,
-    anchor: { x: 0, y: 0.5 },
-    visibility: false, // Initially hidden, managed by gameButtonVisibilityManager
-  });
+  // const roundIdText = createText({
+  //   x: appWidth * 0.02,
+  //   y: cashoutButton.y - appHeight * 0.07,
+  //   text: `Round ID: ${GlobalState.getRoundId()}`,
+  //   fontSize: Math.min(15, appHeight * 0.025),
+  //   color: UI_THEME.INPUT_TEXT,
+  //   anchor: { x: 0, y: 0.5 },
+  //   visibility: false, // Initially hidden, managed by gameButtonVisibilityManager
+  // });
 
   container.addChild(cashoutButton);
   container.addChild(rewardText);
@@ -75,13 +75,13 @@ export const createCashoutButton = (appWidth: number, appHeight: number) => {
   GlobalState.addGameStartedListener(() => {
     (rewardText as any).setText(`Reward: ${GlobalState.getReward()}`);
     (rewardText as any).setVisible(true);
-    (roundIdText as any).setVisible(true);
+    // (roundIdText as any).setVisible(true);
   });
 
   // Add game ended listener to hide reward text
   GlobalState.addGameEndedListener(() => {
     (rewardText as any).setVisible(false);
-    (roundIdText as any).setVisible(false);
+    // (roundIdText as any).setVisible(false);
   });
 
   return container;
